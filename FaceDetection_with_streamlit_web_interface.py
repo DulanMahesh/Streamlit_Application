@@ -2,7 +2,7 @@ import streamlit as st
 import cv2
 import numpy as np
 from PIL import Image
-from io import BytesIO
+from io import BytesIO #BytesIO and base64 are used for handling image data in memory and generating downloadable links.
 import base64
 
 
@@ -11,15 +11,15 @@ st.title("OpenCV Deep Learning based Face Detection")
 img_file_buffer = st.file_uploader("Choose a file", type=['jpg', 'jpeg', 'png'])
 
 # Initialize session state variables
-if 'file_uploaded_name' not in st.session_state:
+if 'file_uploaded_name' not in st.session_state: #file_uploaded_name to keep track of the uploaded file name.
     st.session_state.file_uploaded_name = None
-if 'detections' not in st.session_state:
+if 'detections' not in st.session_state:       #detections to store the face detection results.
     st.session_state.detections = None
 
 # Function for detecting faces in an image.
 def detectFaceOpenCVDnn(net, frame):
     # Create a blob from the image and apply some pre-processing.
-    blob = cv2.dnn.blobFromImage(frame, 1.0, (300, 300), [104, 117, 123], False, False)
+    blob = cv2.dnn.blobFromImage(frame, 1.0, (300, 300), [104, 117, 123], False, False) #  blob is a 4-dimensional array (N, C, H, W) used to standardize the preprocessing of images
     # Set the blob as input to the model.
     net.setInput(blob)
     # Get Detections.
@@ -61,7 +61,9 @@ def get_image_download_link(img, filename, text):
     href = f'<a href="data:file/txt;base64,{img_str}" download="{filename}">{text}</a>'
     return href
 
-net = load_model()
+#Handling Image Upload and Processing
+
+net = load_model() # Loads the model once at the beginning.
 
 if img_file_buffer is not None:
     # Read the file and convert it to OpenCV Image.
@@ -84,7 +86,7 @@ if img_file_buffer is not None:
         # Set the file_uploaded_name equal to the name of the file that was just uploaded.
         st.session_state.file_uploaded_name = file_name
         # Save the detections in the session-state for future use with the current loaded image.
-        st.session_state.detections = detectFaceOpenCVDnn(net, image)
+        st.session_state.detections = detectFaceOpenCVDnn(net, image) # Calls the face detection function if the image is new,
         st.write("New image uploaded, calling the face detection model.")
     else:
         st.write("Same image used, processing with the previous detections.")
