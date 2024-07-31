@@ -1,6 +1,7 @@
 
 import streamlit as st
 
+
 st.title("Streamlit Example")
 st.header("This is header")
 
@@ -17,8 +18,7 @@ selected_value = st.selectbox("Selection box for the selection", ["option 1", "o
 # Print the selected value
 st.write(f"The selected value is: {selected_value}")
 
-#checkbox
-
-checkbox_value =st.checkbox("option1")
+# Checkbox
+checkbox_value = st.checkbox("option1")
 st.write(checkbox_value)
 
