@@ -1,6 +1,6 @@
-# My Awesome Project
+# Face detection App
 
-A brief description of what my project does and its purpose.
+This app can detect faces in a given pictue.It uses res10_300*300_ssd_iter_140000_fp16.caffemodel file to identify faces.
 
 ## Table of Contents
 - [Installation](#installation)
