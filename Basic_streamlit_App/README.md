@@ -1,19 +1,3 @@
-# My Awesome Project
+# application_01
+This python file was created to test out some of the basic funcationality of streamlit app
 
-A brief description of what my project does and its purpose.
-
-## Table of Contents
-- [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
-- [Contact](#contact)
-
-## Installation
-
-To get a development environment running:
-
-```sh
-git clone https://github.com/yourusername/yourrepository.git
-cd yourrepository
-pip install -r requirements.txt
